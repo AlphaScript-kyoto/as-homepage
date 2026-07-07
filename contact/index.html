@@ -1,4 +1,64 @@
 ﻿<!DOCTYPE html>
 <html lang="ja">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Contact | Alpha Script</title><link rel="icon" href="/alpha-script-kyoto/assets/logo.png" type="image/png"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800&display=swap" rel="stylesheet"><script src="https://cdn.tailwindcss.com"></script><script>tailwind.config={theme:{extend:{colors:{base:'#111827',accent:'#3B82F6',card:'#1F2937'},fontFamily:{sans:['Noto Sans JP','sans-serif']}}}}</script></head>
-<body class="bg-base text-slate-100 font-sans"><header class="border-b border-slate-800"><div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4"><a href="/alpha-script-kyoto/"><img src="/alpha-script-kyoto/assets/logo.png" class="h-10" alt="Alpha Script"></a><nav><ul class="flex items-center gap-6 text-sm"><li><a href="/alpha-script-kyoto/">Home</a></li><li><a href="/alpha-script-kyoto/about/">About</a></li><li><a href="/alpha-script-kyoto/services/">Services</a></li><li><a href="/alpha-script-kyoto/works/">Works</a></li><li><a href="/alpha-script-kyoto/contact/" class="text-accent">Contact</a></li></ul></nav></div></header><main class="mx-auto max-w-4xl px-6 py-16"><h1 class="mb-5 text-3xl font-bold">お問い合わせ</h1><p class="mb-6 text-slate-300">ご相談は下記メールへお願いします。</p><a class="rounded bg-accent px-5 py-3 font-semibold" href="mailto:contact@example.com">contact@example.com</a></main></body></html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | Alpha Script</title>
+  <link rel="icon" href="/alpha-script-kyoto/assets/logo.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: { colors: { base:'#111827', accent:'#3B82F6', card:'#1F2937' }, fontFamily:{ sans:['Noto Sans JP','sans-serif'] } } } }
+  </script>
+</head>
+<body class="bg-base text-slate-100 font-sans">
+  <header class="sticky top-0 z-50 border-b border-slate-800 bg-base/90 backdrop-blur">
+    <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 lg:px-8">
+      <a href="/alpha-script-kyoto/"><img src="/alpha-script-kyoto/assets/logo.png" alt="Alpha Script" class="h-10"></a>
+      <nav>
+        <ul class="flex items-center gap-6 text-sm font-medium">
+          <li><a href="/alpha-script-kyoto/" class="text-slate-300 hover:text-accent">Home</a></li>
+          <li><a href="/alpha-script-kyoto/about/" class="text-slate-300 hover:text-accent">About</a></li>
+          <li><a href="/alpha-script-kyoto/services/" class="text-slate-300 hover:text-accent">Services</a></li>
+          <li><a href="/alpha-script-kyoto/works/" class="text-slate-300 hover:text-accent">Works</a></li>
+          <li><a href="/alpha-script-kyoto/contact/" class="text-accent">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="mx-auto max-w-3xl px-6 py-16 lg:px-8">
+    <h1 class="mb-4 text-3xl font-bold">お問い合わせ</h1>
+    <p class="mb-8 text-slate-300">ご相談内容を入力して送信してください。2営業日以内に返信します。</p>
+
+    <form action="https://formspree.io/f/xbdvbqbn" method="POST" class="rounded-2xl border border-slate-800 bg-card p-6 lg:p-8 space-y-5">
+      <div>
+        <label for="name" class="mb-2 block text-sm font-medium">お名前</label>
+        <input id="name" name="name" type="text" required class="w-full rounded-lg border border-slate-700 bg-slate-900 px-4 py-3 text-slate-100 placeholder:text-slate-500 focus:border-accent focus:outline-none">
+      </div>
+      <div>
+        <label for="email" class="mb-2 block text-sm font-medium">メールアドレス</label>
+        <input id="email" name="email" type="email" required class="w-full rounded-lg border border-slate-700 bg-slate-900 px-4 py-3 text-slate-100 placeholder:text-slate-500 focus:border-accent focus:outline-none">
+      </div>
+      <div>
+        <label for="subject" class="mb-2 block text-sm font-medium">件名</label>
+        <select id="subject" name="subject" class="w-full rounded-lg border border-slate-700 bg-slate-900 px-4 py-3 text-slate-100 focus:border-accent focus:outline-none">
+          <option>LP制作のご相談</option>
+          <option>コーポレートHP制作のご相談</option>
+          <option>業務自動化ツールのご相談</option>
+          <option>月額運用プランのご相談</option>
+          <option>その他</option>
+        </select>
+      </div>
+      <div>
+        <label for="message" class="mb-2 block text-sm font-medium">ご相談内容</label>
+        <textarea id="message" name="message" rows="6" required class="w-full rounded-lg border border-slate-700 bg-slate-900 px-4 py-3 text-slate-100 placeholder:text-slate-500 focus:border-accent focus:outline-none" placeholder="ご希望の内容・予算・納期など"></textarea>
+      </div>
+      <button type="submit" class="w-full rounded-lg bg-accent px-5 py-3 text-center font-semibold text-white hover:bg-blue-500">送信する</button>
+      <p class="text-xs text-slate-400">送信すると Formspree 経由で Alpha Script に通知されます。</p>
+    </form>
+  </main>
+</body>
+</html>
