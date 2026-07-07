@@ -1,6 +1,6 @@
-# Alpha Script Kyoto
+# Alpha Script
 
-京都を拠点にHP制作・LP制作・業務改善ツール開発を行うWeb制作会社の公式ウェブサイトです。
+HP制作・LP制作・業務改善ツール開発を行うWeb制作会社の公式ウェブサイトです。
 
 **公開URL（GitHub Pages）:** https://gurashiroozisan.github.io/alpha-script-kyoto/
 
@@ -95,4 +95,4 @@ python -m http.server 8000
 
 ## ライセンス
 
-© 2026 Alpha Script Kyoto. All rights reserved.
+© 2026 Alpha Script. All rights reserved.

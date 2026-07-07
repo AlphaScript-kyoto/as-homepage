@@ -1,27 +1,26 @@
-# Alpha Script Kyoto
+# Alpha Script
 
-> 京都を拠点に、ホームページ制作・ランディングページ（LP）制作・業務改善ツール開発を行うWeb制作会社です。
+> ホームページ制作・ランディングページ（LP）制作・業務改善ツール開発を行うWeb制作会社です。
 
-Alpha Script Kyoto（アルファスクリプト京都）は、集客のためのWebサイト制作と、業務効率化のためのツール開発の両面から、お客様のビジネス成長をデジタルで支援します。
+Alpha Scriptは、集客のためのWebサイト制作と、業務効率化のためのツール開発の両面から、お客様のビジネス成長をデジタルで支援します。37件以上のLP・HP・業務ツールデモを公開しています。
 
 ## 主要ページ
 
 - [ホーム](https://gurashiroozisan.github.io/alpha-script-kyoto/): 会社概要とサービス紹介
 - [About](https://gurashiroozisan.github.io/alpha-script-kyoto/about/): 理念・強み・制作の流れ
 - [Services](https://gurashiroozisan.github.io/alpha-script-kyoto/services/): 提供サービス詳細とFAQ
-- [Works](https://gurashiroozisan.github.io/alpha-script-kyoto/works/): 制作実績
+- [Works](https://gurashiroozisan.github.io/alpha-script-kyoto/works/): 制作デモ・ポートフォリオ
 - [Contact](https://gurashiroozisan.github.io/alpha-script-kyoto/contact/): お問い合わせ
+
+## ポートフォリオHub（制作デモ37件）
+
+- [demo-portfolio](https://gurashiroozisan.github.io/demo-portfolio/): LP・HP・業務ツールのインタラクティブデモ一覧。検索・フィルター・料金目安付き。
 
 ## サービス
 
 - **ホームページ制作**: コーポレートサイト、店舗サイト、ポートフォリオサイト
 - **ランディングページ制作**: 商品・サービス訴求LP、キャンペーンLP
 - **業務改善ツール開発**: 予約管理、売上集計、業務自動化ツール
-
-## 対応エリア
-
-- 拠点: 京都府
-- 全国対応（オンライン打ち合わせ・納品可）
 
 ## お問い合わせ
 
