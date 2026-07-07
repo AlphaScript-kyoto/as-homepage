@@ -1,5 +1,114 @@
 ﻿<!DOCTYPE html>
 <html lang="ja">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>About | Alpha Script</title><link rel="icon" href="/as-homepage/assets/logo.png" type="image/png"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800&display=swap" rel="stylesheet"><script src="https://cdn.tailwindcss.com"></script><script>tailwind.config={theme:{extend:{colors:{base:'#111827',accent:'#3B82F6',card:'#1F2937'},fontFamily:{sans:['Noto Sans JP','sans-serif']}}}}</script></head>
-<body class="bg-base text-slate-100 font-sans"><header class="border-b border-slate-800"><div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4"><a href="/as-homepage/"><img src="/as-homepage/assets/logo.png" class="h-10" alt="Alpha Script"></a><nav><ul class="flex items-center gap-6 text-sm"><li><a href="/as-homepage/">Home</a></li><li><a href="/as-homepage/about/" class="text-accent">About</a></li><li><a href="/as-homepage/services/">Services</a></li><li><a href="/as-homepage/works/">Works</a></li><li><a href="/as-homepage/contact/">Contact</a></li></ul></nav></div></header><main class="mx-auto max-w-4xl px-6 py-16"><h1 class="mb-5 text-3xl font-bold">About</h1><p class="mb-4 text-slate-300">Alpha Scriptは、制作だけで終わらない「Web運用の専属エンジニア」です。</p><p class="text-slate-300">LP・コーポレートHP・業務自動化ツールの実装から、公開後の改善運用まで継続的に支援します。</p></main></body></html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About | Alpha Script</title>
+  <meta name="description" content="Alpha ScriptのAboutページ。Web制作から運用・業務自動化まで一貫対応する専属エンジニアについて。">
+  <link rel="icon" href="/as-homepage/assets/logo.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            base: '#111827',
+            accent: '#3B82F6',
+            card: '#1F2937'
+          },
+          fontFamily: {
+            sans: ['Noto Sans JP', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-base text-slate-100 font-sans">
+  <header class="sticky top-0 z-50 border-b border-slate-800 bg-base/90 backdrop-blur">
+    <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 lg:px-8">
+      <a href="/as-homepage/"><img src="/as-homepage/assets/logo.png" class="h-10" alt="Alpha Script"></a>
+      <nav>
+        <ul class="flex items-center gap-6 text-sm font-medium">
+          <li><a href="/as-homepage/" class="text-slate-300 hover:text-accent">Home</a></li>
+          <li><a href="/as-homepage/about/" class="text-accent">About</a></li>
+          <li><a href="/as-homepage/services/" class="text-slate-300 hover:text-accent">Services</a></li>
+          <li><a href="/as-homepage/works/" class="text-slate-300 hover:text-accent">Works</a></li>
+          <li><a href="/as-homepage/contact/" class="rounded bg-accent px-4 py-2 text-white hover:bg-blue-500">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
+  <main class="mx-auto max-w-6xl px-6 py-16 lg:px-8">
+    <section class="mb-10 rounded-2xl border border-slate-800 bg-card/70 p-8 lg:p-12">
+      <p class="mb-3 text-sm font-semibold uppercase tracking-widest text-accent">About</p>
+      <h1 class="text-3xl font-bold leading-tight lg:text-5xl">制作で終わらせない。<br>運用でビジネスを加速させる。</h1>
+      <p class="mt-5 max-w-3xl text-slate-300">Alpha Scriptは、Webサイトを作って終わる制作会社ではなく、変化に合わせて伴走し続ける「Web運用の専属エンジニア」です。</p>
+    </section>
+
+    <section class="mb-10">
+      <div class="mb-6 flex items-center gap-3">
+        <span class="inline-block h-2 w-2 rounded-full bg-accent"></span>
+        <h2 class="text-2xl font-bold lg:text-3xl">こんなお悩みありませんか？</h2>
+      </div>
+      <div class="grid gap-4 md:grid-cols-3">
+        <article class="rounded-xl border border-slate-800 bg-card p-5">
+          <p class="text-slate-200">「Webサイトを作ったはいいけれど、その後は放置したまま…」</p>
+        </article>
+        <article class="rounded-xl border border-slate-800 bg-card p-5">
+          <p class="text-slate-200">「ちょっとした修正をお願いしたいだけなのに、見積もりや確認に数日かかってしまう」</p>
+        </article>
+        <article class="rounded-xl border border-slate-800 bg-card p-5">
+          <p class="text-slate-200">「Web制作だけでなく、集計業務や予約管理まで一括で相談できるパートナーが欲しい」</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="mb-10 rounded-2xl border border-accent/40 bg-gradient-to-br from-card to-slate-900 p-8 lg:p-10">
+      <div class="mb-5 inline-flex items-center rounded-full border border-accent/40 bg-accent/10 px-4 py-1 text-sm font-semibold text-accent">私たちが解決します</div>
+      <p class="text-xl font-bold leading-relaxed text-white lg:text-2xl">「制作」で終わらせず、「運用」でビジネスを加速させる。</p>
+      <p class="mt-4 text-slate-300">Alpha Scriptは、単にWebサイトを作るだけの制作会社ではありません。あなたのビジネスに深く寄り添い、Web運用のすべてを担う「専属エンジニア」です。</p>
+
+      <h3 class="mt-8 text-xl font-bold text-accent">なぜ、Alpha Scriptなのか？</h3>
+      <p class="mt-3 text-slate-300">Webサイトは、公開してからが本当のスタートです。多くの制作会社が「納品して終わり」にする中、私たちはビジネス環境の変化に合わせて、サイトの機能追加や修正を<span class="font-bold text-white">翌日には反映する「爆速運用」</span>を提供します。</p>
+    </section>
+
+    <section class="mb-12">
+      <div class="mb-6 flex items-center gap-3">
+        <span class="inline-block h-2 w-2 rounded-full bg-accent"></span>
+        <h2 class="text-2xl font-bold lg:text-3xl">私たちが提供できること</h2>
+      </div>
+      <div class="grid gap-4 md:grid-cols-2">
+        <article class="rounded-xl border border-slate-800 bg-card p-6">
+          <h3 class="text-lg font-bold text-accent">戦略的なWeb制作</h3>
+          <p class="mt-2 text-slate-300">LP・コーポレートサイトの構築から、売上集計・業務ダッシュボード開発までを一貫対応。</p>
+        </article>
+        <article class="rounded-xl border border-slate-800 bg-card p-6">
+          <h3 class="text-lg font-bold text-accent">変化に対応する運用保守</h3>
+          <p class="mt-2 text-slate-300">既存の文章修正から新機能の追加まで、月額定額で何度でもサポート。</p>
+        </article>
+        <article class="rounded-xl border border-slate-800 bg-card p-6">
+          <h3 class="text-lg font-bold text-accent">業務の自動化</h3>
+          <p class="mt-2 text-slate-300">API連携や通知フローの構築により、あなたの本来の業務に集中できる環境を構築。</p>
+        </article>
+        <article class="rounded-xl border border-slate-800 bg-card p-6">
+          <h3 class="text-lg font-bold text-accent">理想をスピーディーに実現</h3>
+          <p class="mt-2 text-slate-300">「サイトを最新に保ちたい」「もっと効率的に管理したい」という理想を、技術で素早く形にします。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="rounded-2xl border border-slate-800 bg-card p-8 text-center lg:p-10">
+      <h2 class="text-2xl font-bold lg:text-3xl">まずは現状のお悩みを聞かせてください</h2>
+      <p class="mx-auto mt-3 max-w-2xl text-slate-300">「どこから手をつけるべきか分からない」という段階でも大丈夫です。課題の整理から一緒に進めます。</p>
+      <div class="mt-6">
+        <a href="/as-homepage/contact/" class="inline-flex rounded bg-accent px-6 py-3 font-semibold text-white hover:bg-blue-500">無料で相談する</a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
