@@ -1,0 +1,23 @@
+---
+description: Commit and push to GitHub after every site update
+alwaysApply: true
+---
+
+# Auto Push After Updates
+
+このプロジェクトでファイルを変更したら、作業完了時に必ず GitHub へ push する。
+
+## 手順
+
+1. `git status` と `git diff` で変更内容を確認
+2. 関連ファイルを `git add` する
+3. 変更内容を反映したコミットメッセージで `git commit` する
+4. `git push origin main` を実行する
+5. `git status` で push 成功を確認する
+
+## 注意
+
+- コミットはユーザーが明示的に依頼したときだけでなく、サイト更新作業の完了時にも行う
+- push は破壊的操作（`--force` 等）は使わない
+- コミットに秘密情報（`.env`、認証情報など）を含めない
+- push に失敗した場合は原因を確認し、可能なら再試行する
