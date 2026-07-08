@@ -101,7 +101,9 @@
       <h2 class="mb-3 text-2xl font-bold" data-reveal>Web運用・保守プラン（制作後の継続サポート）</h2>
       <p class="plan-lead text-white mb-6" data-reveal>制作したWebサイトを最大限に活かし、ビジネスの成長を止めないための運用サポートです。</p>
 
-      <div class="overflow-x-auto" data-reveal>
+      <div class="plan-table-wrap" data-reveal>
+        <p class="plan-table-hint" aria-hidden="true"><span class="plan-table-hint__icon">→</span>横にスワイプして比較</p>
+        <div class="plan-table-scroll" tabindex="0" role="region" aria-label="月額プラン比較表（横スクロール）">
         <table class="min-w-[840px] w-full text-sm">
           <thead>
             <tr class="border-b border-slate-700 text-accent">
@@ -132,6 +134,7 @@
             </tr>
           </tbody>
         </table>
+        </div>
       </div>
 
       <p class="mt-6 rounded-lg border border-accent/30 bg-accent/10 p-4 text-sm leading-relaxed text-slate-200" data-reveal>
@@ -139,6 +142,7 @@
       </p>
     </section>
   </main>
+  <script src="/as-homepage/js/plan-table-scroll.js"></script>
   <script src="/as-homepage/js/scroll-reveal.js"></script>
 </body>
 </html>

@@ -119,6 +119,95 @@ body {
   color: #ffffff !important;
 }
 
+/* ── Plan table horizontal scroll hint ── */
+
+.plan-table-wrap {
+  position: relative;
+}
+
+.plan-table-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.75rem;
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid rgba(59, 130, 246, 0.4);
+  background: rgba(59, 130, 246, 0.12);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #93c5fd;
+  transition: opacity 0.35s ease, margin 0.35s ease, padding 0.35s ease, max-height 0.35s ease;
+}
+
+.plan-table-hint__icon {
+  display: inline-block;
+  animation: plan-hint-nudge 1.4s ease-in-out infinite;
+}
+
+@keyframes plan-hint-nudge {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(5px); }
+}
+
+.plan-table-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(59, 130, 246, 0.5) rgba(148, 163, 184, 0.15);
+}
+
+.plan-table-scroll::-webkit-scrollbar {
+  height: 6px;
+}
+
+.plan-table-scroll::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgba(59, 130, 246, 0.55);
+}
+
+.plan-table-scroll::-webkit-scrollbar-track {
+  background: rgba(148, 163, 184, 0.12);
+  border-radius: 999px;
+}
+
+.plan-table-wrap::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 2.75rem;
+  height: 100%;
+  pointer-events: none;
+  background: linear-gradient(to right, transparent, rgba(31, 41, 55, 0.92));
+  opacity: 1;
+  transition: opacity 0.35s ease;
+}
+
+.plan-table-wrap.is-scrolled .plan-table-hint {
+  opacity: 0;
+  max-height: 0;
+  margin-bottom: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  overflow: hidden;
+  border-color: transparent;
+}
+
+.plan-table-wrap.is-scroll-end::after {
+  opacity: 0;
+}
+
+@media (min-width: 768px) {
+  .plan-table-hint {
+    display: none;
+  }
+
+  .plan-table-wrap::after {
+    display: none;
+  }
+}
+
 /* ── Layout & breathing room ── */
 
 .site-container {
@@ -882,6 +971,10 @@ body {
   .hero-diff-item,
   .hero-showcase {
     animation: none !important;
+  }
+
+  .plan-table-hint__icon {
+    animation: none;
   }
 
   .hero-showcase__slide {
