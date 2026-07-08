@@ -230,10 +230,11 @@
     <div class="mt-12 rounded-2xl border border-slate-800 bg-card p-7 lg:p-9">
     <h3 class="mb-3 text-xl font-bold" data-reveal>月額プラン比較</h3>
     <p class="plan-lead text-white mb-6 lg:text-base" data-reveal>制作したWebサイトを最大限に活かし、ビジネスの成長を止めないための運用サポートです。</p>
-    <div class="plan-table-wrap" data-reveal>
+    <div class="plan-table-outer">
       <p class="plan-table-hint" aria-hidden="true"><span class="plan-table-hint__icon">→</span>横にスワイプして比較</p>
-      <div class="plan-table-scroll" tabindex="0" role="region" aria-label="月額プラン比較表（横スクロール）">
-      <table class="min-w-[840px] w-full text-sm">
+      <div class="plan-table-wrap">
+        <div class="plan-table-scroll" tabindex="0" role="region" aria-label="月額プラン比較表（横スクロール）">
+        <table class="min-w-[840px] w-full text-sm">
         <thead>
           <tr class="border-b border-slate-700 text-accent">
             <th class="p-3 text-left">項目</th>
@@ -262,7 +263,8 @@
             <td class="p-3 text-center">毎月の戦略・改善コンサル</td>
           </tr>
         </tbody>
-      </table>
+        </table>
+        </div>
       </div>
     </div>
     </div>

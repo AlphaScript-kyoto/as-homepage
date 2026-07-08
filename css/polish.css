@@ -121,12 +121,22 @@ body {
 
 /* ── Plan table horizontal scroll hint ── */
 
+.plan-table-outer {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
 .plan-table-wrap {
   position: relative;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow: hidden;
 }
 
 .plan-table-hint {
-  display: inline-flex;
+  display: none;
   align-items: center;
   gap: 0.4rem;
   margin-bottom: 0.75rem;
@@ -140,6 +150,10 @@ body {
   transition: opacity 0.35s ease, margin 0.35s ease, padding 0.35s ease, max-height 0.35s ease;
 }
 
+.plan-table-outer.is-scrollable .plan-table-hint {
+  display: inline-flex;
+}
+
 .plan-table-hint__icon {
   display: inline-block;
   animation: plan-hint-nudge 1.4s ease-in-out infinite;
@@ -151,8 +165,15 @@ body {
 }
 
 .plan-table-scroll {
+  display: block;
   overflow-x: auto;
+  overflow-y: hidden;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
   -webkit-overflow-scrolling: touch;
+  touch-action: pan-x;
+  overscroll-behavior-x: contain;
   scrollbar-width: thin;
   scrollbar-color: rgba(59, 130, 246, 0.5) rgba(148, 163, 184, 0.15);
 }
@@ -174,17 +195,21 @@ body {
 .plan-table-wrap::after {
   content: '';
   position: absolute;
+  top: 0;
   right: 0;
   bottom: 0;
   width: 2.75rem;
-  height: 100%;
   pointer-events: none;
   background: linear-gradient(to right, transparent, rgba(31, 41, 55, 0.92));
-  opacity: 1;
+  opacity: 0;
   transition: opacity 0.35s ease;
 }
 
-.plan-table-wrap.is-scrolled .plan-table-hint {
+.plan-table-outer.is-scrollable .plan-table-wrap::after {
+  opacity: 1;
+}
+
+.plan-table-outer.is-scrolled .plan-table-hint {
   opacity: 0;
   max-height: 0;
   margin-bottom: 0;
@@ -194,13 +219,13 @@ body {
   border-color: transparent;
 }
 
-.plan-table-wrap.is-scroll-end::after {
+.plan-table-outer.is-scroll-end .plan-table-wrap::after {
   opacity: 0;
 }
 
 @media (min-width: 768px) {
   .plan-table-hint {
-    display: none;
+    display: none !important;
   }
 
   .plan-table-wrap::after {
