@@ -39,14 +39,14 @@
 </head>
 <body class="bg-base text-slate-100 font-sans">
 <header class="sticky top-0 z-50 border-b border-slate-800 bg-base/90 backdrop-blur">
-  <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 lg:px-8">
+  <div class="site-container flex items-center justify-between py-4">
     <a href="/as-homepage/" class="site-header-brand"><img src="/as-homepage/assets/logo.png" alt="Alpha Script" class="site-header-logo"></a>
     <button id="menu-btn" class="md:hidden rounded border border-slate-700 px-3 py-2 text-sm">MENU</button>
     <nav class="hidden md:block"><ul class="flex items-center gap-6 text-sm font-medium"><li><a href="/as-homepage/" class="text-slate-300 hover:text-accent">Home</a></li><li><a href="/as-homepage/about/" class="text-slate-300 hover:text-accent">About</a></li><li><a href="/as-homepage/services/" class="text-slate-300 hover:text-accent">Services</a></li><li><a href="/as-homepage/works/" class="text-accent">Works</a></li><li><a href="/as-homepage/contact/" class="rounded bg-accent px-4 py-2 text-white">Contact</a></li></ul></nav>
   </div>
   <nav id="mobile-menu" class="hidden border-t border-slate-800 px-6 py-4 md:hidden"><ul class="space-y-3 text-sm"><li><a href="/as-homepage/">Home</a></li><li><a href="/as-homepage/about/">About</a></li><li><a href="/as-homepage/services/">Services</a></li><li><a href="/as-homepage/works/">Works</a></li><li><a href="/as-homepage/contact/">Contact</a></li></ul></nav>
 </header>
-<main class="mx-auto max-w-6xl px-6 py-16 lg:px-8">
+<main class="site-container py-16">
   <section class="mb-10 rounded-2xl border border-slate-800 bg-card/70 p-8">
     <h1 class="mb-3 text-3xl font-bold">制作デモ・ポートフォリオ</h1>
     <p class="text-slate-300">ポートフォリオHubの実デモへ直接アクセスできます。</p>
@@ -63,7 +63,7 @@
       <div class="flex flex-wrap gap-2"><button class="rounded border border-slate-700 bg-accent px-3 py-2 text-sm" data-portfolio-filter="all">注目デモ</button><button class="rounded border border-slate-700 px-3 py-2 text-sm" data-portfolio-filter="tool">業務ツール</button><button class="rounded border border-slate-700 px-3 py-2 text-sm" data-portfolio-filter="lp">LP</button><button class="rounded border border-slate-700 px-3 py-2 text-sm" data-portfolio-filter="hp">HP</button></div>
       <p id="portfolioCount" class="text-sm text-slate-400">10 件を表示（全37件）</p>
     </div>
-    <div id="portfolioGrid" class="grid gap-6 md:grid-cols-2 lg:grid-cols-3"></div>
+    <div id="portfolioGrid" class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"></div>
   </section>
 </main>
 <dialog id="storyModal" class="w-full max-w-2xl rounded-2xl border border-slate-700 bg-card p-0 text-slate-100 backdrop:bg-black/70">
