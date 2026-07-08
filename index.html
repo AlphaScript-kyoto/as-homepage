@@ -73,18 +73,82 @@
 </header>
 
 <main class="page-main mx-auto max-w-6xl px-6 lg:px-8">
-  <section class="page-section hero-panel rounded-2xl border border-slate-800 bg-card/60">
-    <div class="hero-content">
-      <p class="hero-eyebrow mb-4 text-sm uppercase text-accent">Dedicated Web Engineer</p>
-      <h1 class="hero-title mb-6 text-slate-50">
-        <span class="hero-title-line">「作る」だけで終わらせない。</span>
-        <span class="hero-title-line">Web運用の専属エンジニア。</span>
-      </h1>
-      <p class="hero-lead max-w-3xl text-base text-slate-300 lg:text-lg">小規模事業者・店舗・士業向けに、Webサイト制作から業務効率化ツールまで一貫対応。プロトタイプは最速当日完成、修正依頼も止めずに回せる運用体制で「待たなくていい」安心を届けます。</p>
+  <section class="page-section hero-firstview" aria-labelledby="hero-heading">
+    <div class="hero-firstview__bg" aria-hidden="true">
+      <div class="hero-orb hero-orb--1"></div>
+      <div class="hero-orb hero-orb--2"></div>
+      <div class="hero-grid-lines"></div>
     </div>
-    <div class="mt-10 flex flex-wrap gap-4">
-      <a href="/as-homepage/contact/" class="btn-cta btn-cta-primary">無料相談する</a>
-      <a href="/as-homepage/works/" class="btn-cta btn-cta-secondary">制作事例を見る</a>
+
+    <div class="hero-firstview__inner">
+      <div class="hero-firstview__copy">
+        <p class="hero-eyebrow mb-4 text-sm uppercase text-accent">Dedicated Web Engineer</p>
+        <h1 id="hero-heading" class="hero-title mb-5 text-slate-50">
+          <span class="hero-title-line">「作る」だけで終わらせない。</span>
+          <span class="hero-title-line">Web運用の専属エンジニア。</span>
+        </h1>
+        <p class="hero-lead mb-6 max-w-xl text-base text-slate-300 lg:text-lg">Alpha Scriptに任せると、<strong class="font-semibold text-slate-100">当日プロトタイプ</strong>・<strong class="font-semibold text-slate-100">即日修正</strong>・<strong class="font-semibold text-slate-100">業務自動化</strong>まで、ひとつの専属エンジニアが一気通貫で担います。</p>
+
+        <ul class="hero-diff-list mb-8">
+          <li class="hero-diff-item">
+            <span class="hero-diff-item__icon">⚡</span>
+            <span><strong>当日プロトタイプ</strong><br><span class="hero-diff-item__sub">相談から初稿提示まで最速当日</span></span>
+          </li>
+          <li class="hero-diff-item">
+            <span class="hero-diff-item__icon">🔄</span>
+            <span><strong>修正待ちゼロ運用</strong><br><span class="hero-diff-item__sub">通常は当日中に反映</span></span>
+          </li>
+          <li class="hero-diff-item">
+            <span class="hero-diff-item__icon">🤝</span>
+            <span><strong>制作後も伴走</strong><br><span class="hero-diff-item__sub">Web改善＋業務自動化まで継続支援</span></span>
+          </li>
+        </ul>
+
+        <div class="flex flex-wrap gap-4">
+          <a href="/as-homepage/contact/" class="btn-cta btn-cta-primary">無料相談する</a>
+          <a href="/as-homepage/works/" class="btn-cta btn-cta-secondary">制作事例を見る</a>
+        </div>
+      </div>
+
+      <div class="hero-showcase" aria-hidden="true">
+        <div class="hero-showcase__glow"></div>
+        <div class="hero-showcase__frame">
+          <div class="hero-showcase__bar">
+            <span></span><span></span><span></span>
+            <p class="hero-showcase__url">alphascript.dev / live-demo</p>
+          </div>
+          <div class="hero-showcase__screen">
+            <div class="hero-showcase__slides">
+              <article class="hero-showcase__slide hero-showcase__slide--1 is-active">
+                <p class="hero-showcase__tag">STEP 01</p>
+                <h3>相談当日にプロトタイプ提示</h3>
+                <p>アイデアをその日のうちに可視化。検討を止めません。</p>
+                <div class="hero-showcase__progress"><span style="width:92%"></span></div>
+                <p class="hero-showcase__status hero-showcase__status--live">● 初稿提示完了</p>
+              </article>
+              <article class="hero-showcase__slide hero-showcase__slide--2">
+                <p class="hero-showcase__tag">STEP 02</p>
+                <h3>修正依頼 → 当日反映</h3>
+                <p>文言・画像変更も待たせない運用体制。</p>
+                <div class="hero-showcase__progress"><span style="width:100%"></span></div>
+                <p class="hero-showcase__status hero-showcase__status--live">● 反映済み（本日）</p>
+              </article>
+              <article class="hero-showcase__slide hero-showcase__slide--3">
+                <p class="hero-showcase__tag">STEP 03</p>
+                <h3>業務自動化で時間を創出</h3>
+                <p>CSV/API連携でルーチン作業を削減。</p>
+                <div class="hero-showcase__metrics">
+                  <div><strong>−4h</strong><span>週次作業</span></div>
+                  <div><strong>24/7</strong><span>自動処理</span></div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+        <img src="/as-homepage/assets/logo.png" alt="" class="hero-showcase__logo">
+        <div class="hero-showcase__badge hero-showcase__badge--1">他社：納品で終了</div>
+        <div class="hero-showcase__badge hero-showcase__badge--2">Alpha Script：公開後が本番</div>
+      </div>
     </div>
   </section>
 
@@ -237,6 +301,7 @@
   const m = document.getElementById('mobile-menu');
   if (b && m) b.addEventListener('click', () => m.classList.toggle('hidden'));
 </script>
+<script src="/as-homepage/js/hero-showcase.js"></script>
 <script src="/as-homepage/js/scroll-reveal.js"></script>
 </body>
 </html>
