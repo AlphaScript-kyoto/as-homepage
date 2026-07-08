@@ -429,12 +429,12 @@ body {
 
 .hero-showcase__screen {
   padding: 1.25rem;
-  min-height: 240px;
+  min-height: 280px;
 }
 
 .hero-showcase__slides {
   position: relative;
-  min-height: 200px;
+  min-height: 260px;
 }
 
 .hero-showcase__slide {
@@ -466,16 +466,40 @@ body {
 }
 
 .hero-showcase__tag {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.65rem;
+  font-family: 'Inter', 'Noto Sans JP', sans-serif;
+  font-size: 0.68rem;
   font-weight: 600;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.06em;
   color: var(--as-accent);
-  margin-bottom: 0.65rem;
+  margin-bottom: 0.55rem;
+  line-height: 1.45;
+}
+
+.hero-showcase__lead {
+  font-size: 0.85rem;
+  color: #94a3b8;
+  line-height: 1.65;
+  margin-bottom: 0.25rem;
+}
+
+.hero-showcase__points {
+  margin: 0.85rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.hero-showcase__points li {
+  font-size: 0.78rem;
+  font-weight: 600;
+  line-height: 1.45;
+  color: #4ade80;
 }
 
 .hero-showcase__progress {
-  margin-top: 1.25rem;
+  margin-top: 1rem;
   height: 4px;
   border-radius: 999px;
   background: rgba(148, 163, 184, 0.2);
@@ -489,10 +513,6 @@ body {
   border-radius: inherit;
   background: linear-gradient(90deg, var(--as-accent), #60a5fa);
   transition: width linear;
-}
-
-.hero-showcase__progress--slide {
-  margin-top: 1.25rem;
 }
 
 .hero-showcase__status {
@@ -597,11 +617,19 @@ body {
 
   .hero-showcase__screen {
     padding: 0.85rem;
-    min-height: 180px;
+    min-height: 240px;
   }
 
   .hero-showcase__slides {
-    min-height: 160px;
+    min-height: 220px;
+  }
+
+  .hero-showcase__tag {
+    font-size: 0.62rem;
+  }
+
+  .hero-showcase__points li {
+    font-size: 0.72rem;
   }
 
   .hero-showcase__slide h3 {
@@ -618,18 +646,6 @@ body {
     font-size: 0.65rem;
     padding: 0.45rem 0.55rem;
     line-height: 1.35;
-  }
-
-  .hero-showcase__metrics {
-    gap: 0.45rem;
-  }
-
-  .hero-showcase__metrics strong {
-    font-size: 1rem;
-  }
-
-  .hero-showcase__metrics span {
-    font-size: 0.65rem;
   }
 }
 
