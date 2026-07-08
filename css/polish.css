@@ -132,42 +132,29 @@ body {
   padding: clamp(2rem, 5vw, 3.5rem);
 }
 
-/* ── Scroll reveal ── */
+/* ── Scroll reveal (XAIREX-inspired stagger) ── */
 
 .reveal {
   opacity: 0;
-  transform: translateY(36px);
+  transform: translateY(28px);
+  filter: blur(4px);
   transition:
     opacity 0.85s var(--as-ease-out),
-    transform 0.85s var(--as-ease-out);
-  will-change: opacity, transform;
+    transform 0.85s var(--as-ease-out),
+    filter 0.85s var(--as-ease-out);
+  will-change: opacity, transform, filter;
 }
 
 .reveal.is-visible {
   opacity: 1;
   transform: translateY(0);
+  filter: blur(0);
 }
 
-.reveal-delay-1 { transition-delay: 0.1s; }
-.reveal-delay-2 { transition-delay: 0.2s; }
-.reveal-delay-3 { transition-delay: 0.3s; }
-
-.reveal:not(.is-visible) .reveal-stagger {
-  opacity: 0;
-  transform: translateY(22px);
+/* card hover: separate from reveal transform once visible */
+.reveal.is-visible.card-polish:hover {
+  transform: translateY(-2px);
 }
-
-.reveal.is-visible .reveal-stagger {
-  opacity: 1;
-  transform: translateY(0);
-  transition:
-    opacity 0.7s var(--as-ease-out),
-    transform 0.7s var(--as-ease-out);
-}
-
-.reveal.is-visible .reveal-delay-1 { transition-delay: 0.1s; }
-.reveal.is-visible .reveal-delay-2 { transition-delay: 0.22s; }
-.reveal.is-visible .reveal-delay-3 { transition-delay: 0.34s; }
 
 /* ── CTA buttons ── */
 
@@ -245,13 +232,12 @@ body {
   .reveal {
     opacity: 1;
     transform: none;
+    filter: none;
     transition: none;
   }
 
-  .reveal .reveal-stagger {
-    opacity: 1;
+  .reveal.is-visible.card-polish:hover {
     transform: none;
-    transition: none;
   }
 
   .btn-cta:hover {
