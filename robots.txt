@@ -1,4 +1,4 @@
-﻿# https://alphascript-kyoto.github.io/as-homepage/robots.txt
+# https://alphascript-kyoto.github.io/as-homepage/robots.txt
 
 User-agent: *
 Allow: /
