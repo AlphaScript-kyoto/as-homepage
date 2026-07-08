@@ -109,9 +109,14 @@ body {
 }
 
 .plan-lead {
-  color: #ffffff;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff;
   line-height: 1.85;
   font-weight: 400;
+}
+
+.bg-card .plan-lead {
+  color: #ffffff !important;
 }
 
 /* ── Layout & breathing room ── */
