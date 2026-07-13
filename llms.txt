@@ -8,6 +8,7 @@
 - About: https://alphascript-kyoto.github.io/as-homepage/about/
 - Services: https://alphascript-kyoto.github.io/as-homepage/services/
 - Works: https://alphascript-kyoto.github.io/as-homepage/works/
+- Blog: https://alphascript-kyoto.github.io/as-homepage/blog/
 - Contact: https://alphascript-kyoto.github.io/as-homepage/contact/
 
 ## Services Summary

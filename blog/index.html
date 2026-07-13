@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog | Alpha Script</title>
+  <meta name="description" content="Web制作・運用・業務自動化に関するAlpha Scriptのコラム。">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Alpha Script">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:title" content="Blog | Alpha Script">
+  <meta property="og:description" content="Web制作・運用・業務自動化に関するAlpha Scriptのコラム。">
+  <meta property="og:url" content="https://alphascript-kyoto.github.io/as-homepage/blog/">
+  <meta property="og:image" content="https://alphascript-kyoto.github.io/as-homepage/assets/og-image.png">
+  <meta property="og:image:width" content="1024">
+  <meta property="og:image:height" content="537">
+  <meta property="og:image:alt" content="Alpha Script - あなた専属のWeb運用エンジニア">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Blog | Alpha Script">
+  <meta name="twitter:description" content="Web制作・運用・業務自動化に関するAlpha Scriptのコラム。">
+  <meta name="twitter:image" content="https://alphascript-kyoto.github.io/as-homepage/assets/og-image.png">
+  <link rel="icon" href="/as-homepage/assets/logo.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: { colors: { base:'#111827', accent:'#3B82F6', card:'#1F2937' }, fontFamily:{ sans:['Noto Sans JP','sans-serif'] } } } }
+  </script>
+  <link rel="stylesheet" href="/as-homepage/css/polish.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "Alpha Script Blog",
+    "url": "https://alphascript-kyoto.github.io/as-homepage/blog/",
+    "description": "Web制作・運用・業務自動化に関するコラム。"
+  }
+  </script>
+</head>
+<body class="bg-base text-slate-100 font-sans">
+<header class="site-header sticky top-0 z-50 border-b border-slate-800 bg-base/90 backdrop-blur">
+  <div class="site-container flex items-center justify-between py-2 lg:py-3">
+    <a href="/as-homepage/" class="site-header-brand"><img src="/as-homepage/assets/logo.png" alt="Alpha Script" class="site-header-logo"></a>
+    <button id="menu-btn" class="md:hidden rounded border border-slate-700 px-3 py-2 text-sm">MENU</button>
+    <nav id="menu" class="hidden md:block">
+      <ul class="flex items-center gap-6 text-sm font-medium">
+        <li><a href="/as-homepage/" class="text-slate-300 hover:text-accent">Home</a></li>
+        <li><a href="/as-homepage/about/" class="text-slate-300 hover:text-accent">About</a></li>
+        <li><a href="/as-homepage/services/" class="text-slate-300 hover:text-accent">Services</a></li>
+        <li><a href="/as-homepage/works/" class="text-slate-300 hover:text-accent">Works</a></li>
+        <li><a href="/as-homepage/blog/" class="text-accent">Blog</a></li>
+        <li><a href="/as-homepage/contact/" class="rounded bg-accent px-4 py-2 text-white hover:bg-blue-500">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+  <nav id="mobile-menu" class="hidden border-t border-slate-800 px-6 py-4 md:hidden">
+    <ul class="space-y-3 text-sm">
+      <li><a href="/as-homepage/">Home</a></li>
+      <li><a href="/as-homepage/about/">About</a></li>
+      <li><a href="/as-homepage/services/">Services</a></li>
+      <li><a href="/as-homepage/works/">Works</a></li>
+      <li><a href="/as-homepage/blog/">Blog</a></li>
+      <li><a href="/as-homepage/contact/">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+<main class="site-container page-main">
+  <section class="page-section">
+    <p class="section-label mb-3">Blog</p>
+    <h1 class="section-title mb-4">コラム</h1>
+    <p class="mb-10 max-w-3xl text-slate-300">Web制作・運用改善・業務自動化について、実務に役立つ視点を発信します。</p>
+    <div class="blog-list">
+      <article class="blog-card">
+        <p class="blog-card__date">2026年7月12日</p>
+        <h2 class="blog-card__title"><a href="/as-homepage/blog/web-ops-automation/">Web運用の「待ち時間」を減らす業務自動化の考え方</a></h2>
+        <p class="blog-card__desc">更新依頼・データ整理・定型連絡など、Webまわりの手作業は積み重なると機会損失になります。削減しやすい作業の見極め方を紹介します。</p>
+        <div class="blog-card__tags"><span class="blog-tag">業務自動化</span><span class="blog-tag">Web運用</span><span class="blog-tag">効率化</span></div>
+      </article>
+      <article class="blog-card">
+        <p class="blog-card__date">2026年7月10日</p>
+        <h2 class="blog-card__title"><a href="/as-homepage/blog/same-day-prototype/">なぜ「最速、当日プロトタイプ」がビジネス判断を速くするのか</a></h2>
+        <p class="blog-card__desc">相談したその日に形が見えると、社内合意・方向修正・公開までのリードタイムが大きく変わります。Alpha Scriptが当日プロトタイプにこだわる理由を解説します。</p>
+        <div class="blog-card__tags"><span class="blog-tag">プロトタイプ</span><span class="blog-tag">Web制作</span><span class="blog-tag">運用</span></div>
+      </article>
+    </div>
+  </section>
+</main>
+<script>
+  const b = document.getElementById('menu-btn');
+  const m = document.getElementById('mobile-menu');
+  if (b && m) b.addEventListener('click', () => m.classList.toggle('hidden'));
+</script>
+</body>
+</html>

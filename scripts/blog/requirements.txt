@@ -1,0 +1,2 @@
+markdown>=3.5
+openai>=1.40.0
