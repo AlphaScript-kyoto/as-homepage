@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate one blog post with OpenAI and save it as Markdown."""
+"""Generate one blog post via local LM Studio (OpenAI-compatible API)."""
 
 from __future__ import annotations
 
@@ -7,12 +7,16 @@ import json
 import os
 import re
 import sys
+import urllib.error
+import urllib.request
 from datetime import date
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 CONTENT_DIR = ROOT / "content" / "blog"
 TOPICS_PATH = Path(__file__).with_name("topics.json")
+
+DEFAULT_BASE_URL = "http://127.0.0.1:1234/v1"
 
 SYSTEM_PROMPT = """あなたは Alpha Script（Web運用の専属エンジニア）の公式ブログ担当です。
 読者は中小企業の経営者・担当者です。専門用語は易しく、実務で使える内容にしてください。
@@ -21,9 +25,9 @@ SYSTEM_PROMPT = """あなたは Alpha Script（Web運用の専属エンジニア
 - 日本語で書く
 - 誇大広告や根拠のない断定をしない
 - Alpha Script の強み（最速のプロトタイプ、待たせない運用、業務自動化）と矛盾しない
-- Markdown本文のみ（タイトルや説明はJSON側で返す）
 - 見出しは ## と ### のみ使う
 - 800〜1200字程度
+- 出力はJSONのみ（前置き・後書き禁止）
 """
 
 
@@ -32,7 +36,9 @@ def slugify(text: str) -> str:
     text = re.sub(r"[^\w\s-]", "", text, flags=re.UNICODE)
     text = re.sub(r"[\s_]+", "-", text)
     text = re.sub(r"-+", "-", text).strip("-")
-    return text[:60] or "post"
+    # Prefer ASCII slug; fallback if Japanese-only
+    ascii_slug = re.sub(r"[^a-z0-9-]", "", text)
+    return (ascii_slug or "post")[:60]
 
 
 def existing_titles() -> set[str]:
@@ -52,7 +58,6 @@ def pick_topic(titles: set[str]) -> dict:
     for topic in topics:
         if topic["title"] not in titles:
             return topic
-    # fallback: reuse with date suffix idea
     return topics[date.today().toordinal() % len(topics)]
 
 
@@ -70,19 +75,79 @@ def build_markdown(meta: dict, body: str) -> str:
     )
 
 
+def base_url() -> str:
+    return os.environ.get("LM_STUDIO_BASE_URL", DEFAULT_BASE_URL).rstrip("/")
+
+
+def http_json(method: str, url: str, payload: dict | None = None) -> dict:
+    data = None
+    headers = {"Content-Type": "application/json"}
+    if payload is not None:
+        data = json.dumps(payload).encode("utf-8")
+    req = urllib.request.Request(url, data=data, headers=headers, method=method)
+    try:
+        with urllib.request.urlopen(req, timeout=180) as res:
+            return json.loads(res.read().decode("utf-8"))
+    except urllib.error.URLError as exc:
+        raise SystemExit(
+            "LM Studio に接続できませんでした。\n"
+            f"URL: {url}\n"
+            "LM Studio で Local Server を起動し、モデルを Load した状態で再実行してください。\n"
+            f"詳細: {exc}"
+        ) from exc
+
+
+def resolve_model() -> str:
+    env_model = os.environ.get("LM_STUDIO_MODEL", "").strip()
+    if env_model:
+        return env_model
+    models = http_json("GET", f"{base_url()}/models")
+    data = models.get("data") or []
+    if not data:
+        raise SystemExit("LM Studio に読み込み済みモデルがありません。先にモデルを Load してください。")
+    return data[0]["id"]
+
+
+def extract_json(text: str) -> dict:
+    text = text.strip()
+    if text.startswith("```"):
+        text = re.sub(r"^```(?:json)?\s*", "", text)
+        text = re.sub(r"\s*```$", "", text)
+    try:
+        return json.loads(text)
+    except json.JSONDecodeError:
+        match = re.search(r"\{[\s\S]*\}", text)
+        if not match:
+            raise
+        return json.loads(match.group(0))
+
+
+def chat_completion(model: str, user_prompt: str) -> str:
+    payload = {
+        "model": model,
+        "temperature": 0.7,
+        "messages": [
+            {"role": "system", "content": SYSTEM_PROMPT},
+            {"role": "user", "content": user_prompt},
+        ],
+    }
+    result = http_json("POST", f"{base_url()}/chat/completions", payload)
+    try:
+        return result["choices"][0]["message"]["content"] or ""
+    except (KeyError, IndexError, TypeError) as exc:
+        raise SystemExit(f"Unexpected LM Studio response: {result}") from exc
+
+
 def generate() -> Path:
-    api_key = os.environ.get("OPENAI_API_KEY", "").strip()
-    if not api_key:
-        print("OPENAI_API_KEY is not set. Skipping generation.")
-        sys.exit(0)
-
-    from openai import OpenAI
-
     titles = existing_titles()
     topic = pick_topic(titles)
     today = date.today().isoformat()
+    model = resolve_model()
 
-    client = OpenAI(api_key=api_key)
+    print(f"LM Studio: {base_url()}")
+    print(f"Model: {model}")
+    print(f"Topic: {topic['title']}")
+
     user_prompt = f"""次のテーマでブログ記事を書いてください。
 
 テーマ: {topic['title']}
@@ -99,26 +164,16 @@ def generate() -> Path:
 }}
 """
 
-    response = client.chat.completions.create(
-        model=os.environ.get("OPENAI_MODEL", "gpt-4o-mini"),
-        temperature=0.7,
-        response_format={"type": "json_object"},
-        messages=[
-            {"role": "system", "content": SYSTEM_PROMPT},
-            {"role": "user", "content": user_prompt},
-        ],
-    )
-
-    content = response.choices[0].message.content or "{}"
-    data = json.loads(content)
+    content = chat_completion(model, user_prompt)
+    data = extract_json(content)
 
     title = (data.get("title") or topic["title"]).strip()
     description = (data.get("description") or topic["angle"]).strip()
-    slug = slugify(data.get("slug") or title)
+    slug = slugify(str(data.get("slug") or title))
     tags = data.get("tags") if isinstance(data.get("tags"), list) else topic.get("keywords", [])
     body = (data.get("body") or "").strip()
 
-    if len(body) < 400:
+    if len(body) < 300:
         raise SystemExit(f"Generated body too short ({len(body)} chars). Aborting.")
 
     if title in titles:
