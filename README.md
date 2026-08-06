@@ -5,6 +5,7 @@ Web制作・運用保守・業務自動化を一貫して支援する「Web運�
 
 - 公開URL: https://alphascript-kyoto.github.io/as-homepage/
 - ポートフォリオHub: https://demo-portfolio-six-mu.vercel.app/#works
+- GitHub: https://github.com/AlphaScript-kyoto（各ページ最下部フッターに X の下へ表示）
 
 ## サイト構成
 
