@@ -3,7 +3,7 @@
 Alpha Script の公式サイト（GitHub Pages）です。  
 Web制作・運用保守・業務自動化を一貫して支援する「Web運用の専属エンジニア」としての情報を掲載しています。
 
-- 公開URL: https://alphascript-kyoto.github.io/as-homepage/
+- 公開URL: https://alphascript.jp/
 - ポートフォリオHub: https://demo-portfolio-six-mu.vercel.app/#works
 - GitHub: https://github.com/AlphaScript-kyoto（各ページ最下部フッターに X の下へ表示）
 
@@ -62,7 +62,7 @@ python scripts/blog/build_blog.py
 python -m http.server 8000
 ```
 
-ブラウザで `http://localhost:8000/as-homepage/` を開いて確認してください。
+ブラウザで `http://localhost:8000/` を開いて確認してください。
 
 ## デプロイ
 

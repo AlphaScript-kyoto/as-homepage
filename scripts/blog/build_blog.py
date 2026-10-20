@@ -14,8 +14,8 @@ import markdown
 ROOT = Path(__file__).resolve().parents[2]
 CONTENT_DIR = ROOT / "content" / "blog"
 BLOG_DIR = ROOT / "blog"
-SITE_BASE = "https://alphascript-kyoto.github.io/as-homepage"
-SITE_PATH = "/as-homepage"
+SITE_BASE = "https://alphascript.jp"
+SITE_PATH = ""
 
 STATIC_SITEMAP_PAGES = [
     ("/", "1.0", "monthly"),
@@ -85,7 +85,7 @@ def load_posts() -> list[dict]:
                 "date_display": f"{post_date.year}年{post_date.month}月{post_date.day}日",
                 "tags": meta.get("tags") if isinstance(meta.get("tags"), list) else [],
                 "body_html": html_body,
-                "url": f"{SITE_PATH}/blog/{slug}/",
+                "url": f"/blog/{slug}/",
                 "abs_url": f"{SITE_BASE}/blog/{slug}/",
                 "source": path.name,
             }
@@ -120,7 +120,7 @@ def head_block(title: str, description: str, url: str, json_ld: str = "") -> str
   <meta name="twitter:title" content="{safe_title}">
   <meta name="twitter:description" content="{safe_desc}">
   <meta name="twitter:image" content="{SITE_BASE}/assets/og-image.png">
-  <link rel="icon" href="{SITE_PATH}/assets/logo.png" type="image/png">
+  <link rel="icon" href="/assets/logo.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800&display=swap" rel="stylesheet">
@@ -128,7 +128,7 @@ def head_block(title: str, description: str, url: str, json_ld: str = "") -> str
   <script>
     tailwind.config = {{ theme: {{ extend: {{ colors: {{ base:'#111827', accent:'#3B82F6', card:'#1F2937' }}, fontFamily:{{ sans:['Noto Sans JP','sans-serif'] }} }} }} }}
   </script>
-  <link rel="stylesheet" href="{SITE_PATH}/css/polish.css">
+  <link rel="stylesheet" href="/css/polish.css">
   {json_ld}
 </head>
 """
@@ -140,27 +140,27 @@ def nav_html(active: str = "blog") -> str:
 
     return f"""<header class="site-header sticky top-0 z-50 border-b border-slate-800 bg-base/90 backdrop-blur">
   <div class="site-container flex items-center justify-between py-2 lg:py-3">
-    <a href="{SITE_PATH}/" class="site-header-brand"><img src="{SITE_PATH}/assets/logo.png" alt="Alpha Script" class="site-header-logo"></a>
+    <a href="/" class="site-header-brand"><img src="/assets/logo.png" alt="Alpha Script" class="site-header-logo"></a>
     <button id="menu-btn" class="md:hidden rounded border border-slate-700 px-3 py-2 text-sm">MENU</button>
     <nav id="menu" class="hidden md:block">
       <ul class="flex items-center gap-6 text-sm font-medium">
-        <li><a href="{SITE_PATH}/" class="{cls("home")}">Home</a></li>
-        <li><a href="{SITE_PATH}/about/" class="{cls("about")}">About</a></li>
-        <li><a href="{SITE_PATH}/services/" class="{cls("services")}">Services</a></li>
-        <li><a href="{SITE_PATH}/works/" class="{cls("works")}">Works</a></li>
-        <li><a href="{SITE_PATH}/blog/" class="{cls("blog")}">Blog</a></li>
-        <li><a href="{SITE_PATH}/contact/" class="rounded bg-accent px-4 py-2 text-white hover:bg-blue-500">Contact</a></li>
+        <li><a href="/" class="{cls("home")}">Home</a></li>
+        <li><a href="/about/" class="{cls("about")}">About</a></li>
+        <li><a href="/services/" class="{cls("services")}">Services</a></li>
+        <li><a href="/works/" class="{cls("works")}">Works</a></li>
+        <li><a href="/blog/" class="{cls("blog")}">Blog</a></li>
+        <li><a href="/contact/" class="rounded bg-accent px-4 py-2 text-white hover:bg-blue-500">Contact</a></li>
       </ul>
     </nav>
   </div>
   <nav id="mobile-menu" class="hidden border-t border-slate-800 px-6 py-4 md:hidden">
     <ul class="space-y-3 text-sm">
-      <li><a href="{SITE_PATH}/">Home</a></li>
-      <li><a href="{SITE_PATH}/about/">About</a></li>
-      <li><a href="{SITE_PATH}/services/">Services</a></li>
-      <li><a href="{SITE_PATH}/works/">Works</a></li>
-      <li><a href="{SITE_PATH}/blog/">Blog</a></li>
-      <li><a href="{SITE_PATH}/contact/">Contact</a></li>
+      <li><a href="/">Home</a></li>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/services/">Services</a></li>
+      <li><a href="/works/">Works</a></li>
+      <li><a href="/blog/">Blog</a></li>
+      <li><a href="/contact/">Contact</a></li>
     </ul>
   </nav>
 </header>
@@ -287,8 +287,8 @@ def render_post(post: dict) -> str:
 {post["body_html"]}
     </div>
     <div class="mt-12 border-t border-slate-800 pt-8">
-      <a href="{SITE_PATH}/blog/" class="btn-cta btn-cta-secondary btn-cta-sm">← 記事一覧へ</a>
-      <a href="{SITE_PATH}/contact/" class="btn-cta btn-cta-primary btn-cta-sm ml-3">無料相談する</a>
+      <a href="/blog/" class="btn-cta btn-cta-secondary btn-cta-sm">← 記事一覧へ</a>
+      <a href="/contact/" class="btn-cta btn-cta-primary btn-cta-sm ml-3">無料相談する</a>
     </div>
   </article>
 </main>

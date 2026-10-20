@@ -17,7 +17,7 @@ function card(item) {
   const img = DEMO_PORTFOLIO_BASE + item.thumb;
   return `
   <article class="group overflow-hidden rounded-xl border border-slate-800 bg-card transition hover:-translate-y-1 hover:border-accent">
-    <img src="${img}" alt="${item.title}" class="h-44 w-full object-cover" onerror="this.src='/as-homepage/assets/logo.png';this.style.objectFit='contain';this.style.padding='1rem';">
+    <img src="${img}" alt="${item.title}" class="h-44 w-full object-cover" onerror="this.src='/assets/logo.png';this.style.objectFit='contain';this.style.padding='1rem';">
     <div class="p-4">
       <span class="text-xs font-semibold text-accent">${item.category}</span>
       <h3 class="mt-1 text-lg font-bold text-slate-100">${item.title}</h3>

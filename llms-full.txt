@@ -41,11 +41,11 @@ Alpha Scriptは、小規模事業者・店舗・士業向けに、Web制作か�
 
 ## Portfolio
 
-- Works: https://alphascript-kyoto.github.io/as-homepage/works/
-- Blog: https://alphascript-kyoto.github.io/as-homepage/blog/
+- Works: https://alphascript.jp/works/
+- Blog: https://alphascript.jp/blog/
 - Demo hub: https://demo-portfolio-six-mu.vercel.app/#works
 
 ## Contact
 
-- Contact page: https://alphascript-kyoto.github.io/as-homepage/contact/
+- Contact page: https://alphascript.jp/contact/
 

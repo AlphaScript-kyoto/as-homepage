@@ -4,12 +4,12 @@
 
 ## Pages
 
-- Home: https://alphascript-kyoto.github.io/as-homepage/
-- About: https://alphascript-kyoto.github.io/as-homepage/about/
-- Services: https://alphascript-kyoto.github.io/as-homepage/services/
-- Works: https://alphascript-kyoto.github.io/as-homepage/works/
-- Blog: https://alphascript-kyoto.github.io/as-homepage/blog/
-- Contact: https://alphascript-kyoto.github.io/as-homepage/contact/
+- Home: https://alphascript.jp/
+- About: https://alphascript.jp/about/
+- Services: https://alphascript.jp/services/
+- Works: https://alphascript.jp/works/
+- Blog: https://alphascript.jp/blog/
+- Contact: https://alphascript.jp/contact/
 
 ## Services Summary
 
@@ -26,6 +26,6 @@
 
 ## Optional
 
-- Full summary: https://alphascript-kyoto.github.io/as-homepage/llms-full.txt
-- Sitemap: https://alphascript-kyoto.github.io/as-homepage/sitemap.xml
+- Full summary: https://alphascript.jp/llms-full.txt
+- Sitemap: https://alphascript.jp/sitemap.xml
 
