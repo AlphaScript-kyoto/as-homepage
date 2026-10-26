@@ -56,6 +56,10 @@ HTMLだけ再生成する場合:
 python scripts/blog/build_blog.py
 ```
 
+`content/blog/` 直下の `.md` だけが記事になります。`content/blog/drafts/` に置いた原稿はビルドされず、ブログ一覧にも出ません。公開するときは直下へ移してから、上のコマンドを実行してください。
+
+記事末尾の「無料相談する」ボタンは、原稿の先頭で `contact_button: false` と書くと出せません。
+
 ## ローカル確認
 
 ```bash

@@ -75,6 +75,7 @@ def load_posts() -> list[dict]:
             extensions=["extra", "sane_lists", "smarty"],
             output_format="html5",
         )
+        contact_raw = str(meta.get("contact_button", "true")).strip().lower()
         posts.append(
             {
                 "slug": slug,
@@ -88,6 +89,7 @@ def load_posts() -> list[dict]:
                 "url": f"/blog/{slug}/",
                 "abs_url": f"{SITE_BASE}/blog/{slug}/",
                 "source": path.name,
+                "contact_button": contact_raw not in {"false", "0", "no"},
             }
         )
 
@@ -273,6 +275,9 @@ def render_post(post: dict) -> str:
         + json.dumps(payload, ensure_ascii=False, indent=2)
         + "\n  </script>"
     )
+    contact_button = ""
+    if post.get("contact_button", True):
+        contact_button = '\n      <a href="/contact/" class="btn-cta btn-cta-primary btn-cta-sm ml-3">無料相談する</a>'
 
     return (
         head_block(f'{post["title"]} | Alpha Script', post["description"], post["abs_url"], json_ld)
@@ -288,8 +293,7 @@ def render_post(post: dict) -> str:
 {post["body_html"]}
     </div>
     <div class="mt-12 border-t border-slate-800 pt-8">
-      <a href="/blog/" class="btn-cta btn-cta-secondary btn-cta-sm">← 記事一覧へ</a>
-      <a href="/contact/" class="btn-cta btn-cta-primary btn-cta-sm ml-3">無料相談する</a>
+      <a href="/blog/" class="btn-cta btn-cta-secondary btn-cta-sm">← 記事一覧へ</a>{contact_button}
     </div>
   </article>
 </main>

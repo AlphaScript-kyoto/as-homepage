@@ -1073,3 +1073,30 @@ body {
   color: #93c5fd;
   text-decoration: underline;
 }
+
+.blog-prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 0 1.4rem;
+  font-size: 0.92rem;
+}
+
+.blog-prose th,
+.blog-prose td {
+  border: 1px solid #334155;
+  padding: 0.6rem 0.75rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+.blog-prose th {
+  color: #f8fafc;
+  background: #1f2937;
+}
+
+@media (max-width: 640px) {
+  .blog-prose table {
+    display: block;
+    overflow-x: auto;
+  }
+}

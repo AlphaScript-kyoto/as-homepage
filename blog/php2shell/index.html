@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PHPの「重大な穴」とは何か。ホームページ担当者が今確認すること | Alpha Script</title>
+  <meta name="description" content="2026年10月に公開されたPHPの重大な脆弱性（通称PHP2shell）を、専門用語をかみくだいて説明します。WordPressの更新だけでは直らない理由と、レンタルサーバー利用者が確認することをまとめました。">
+  <link rel="canonical" href="https://alphascript.jp/blog/php2shell/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Alpha Script">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:title" content="PHPの「重大な穴」とは何か。ホームページ担当者が今確認すること | Alpha Script">
+  <meta property="og:description" content="2026年10月に公開されたPHPの重大な脆弱性（通称PHP2shell）を、専門用語をかみくだいて説明します。WordPressの更新だけでは直らない理由と、レンタルサーバー利用者が確認することをまとめました。">
+  <meta property="og:url" content="https://alphascript.jp/blog/php2shell/">
+  <meta property="og:image" content="https://alphascript.jp/assets/og-image.png">
+  <meta property="og:image:width" content="1024">
+  <meta property="og:image:height" content="537">
+  <meta property="og:image:alt" content="Alpha Script - あなた専属のWeb運用エンジニア">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="PHPの「重大な穴」とは何か。ホームページ担当者が今確認すること | Alpha Script">
+  <meta name="twitter:description" content="2026年10月に公開されたPHPの重大な脆弱性（通称PHP2shell）を、専門用語をかみくだいて説明します。WordPressの更新だけでは直らない理由と、レンタルサーバー利用者が確認することをまとめました。">
+  <meta name="twitter:image" content="https://alphascript.jp/assets/og-image.png">
+  <link rel="icon" href="/assets/logo.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: { colors: { base:'#111827', accent:'#3B82F6', card:'#1F2937' }, fontFamily:{ sans:['Noto Sans JP','sans-serif'] } } } }
+  </script>
+  <link rel="stylesheet" href="/css/polish.css">
+  <script type="application/ld+json">
+  {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "PHPの「重大な穴」とは何か。ホームページ担当者が今確認すること",
+  "description": "2026年10月に公開されたPHPの重大な脆弱性（通称PHP2shell）を、専門用語をかみくだいて説明します。WordPressの更新だけでは直らない理由と、レンタルサーバー利用者が確認することをまとめました。",
+  "datePublished": "2026-10-26",
+  "author": {
+    "@type": "Organization",
+    "name": "Alpha Script"
+  },
+  "mainEntityOfPage": "https://alphascript.jp/blog/php2shell/",
+  "image": "https://alphascript.jp/assets/og-image.png"
+}
+  </script>
+</head>
+<body class="bg-base text-slate-100 font-sans">
+<header class="site-header sticky top-0 z-50 border-b border-slate-800 bg-base/90 backdrop-blur">
+  <div class="site-container flex items-center justify-between py-2 lg:py-3">
+    <a href="/" class="site-header-brand"><img src="/assets/logo.png" alt="Alpha Script" class="site-header-logo"></a>
+    <button id="menu-btn" class="md:hidden rounded border border-slate-700 px-3 py-2 text-sm">MENU</button>
+    <nav id="menu" class="hidden md:block">
+      <ul class="flex items-center gap-6 text-sm font-medium">
+        <li><a href="/" class="text-slate-300 hover:text-accent">Home</a></li>
+        <li><a href="/about/" class="text-slate-300 hover:text-accent">About</a></li>
+        <li><a href="/services/" class="text-slate-300 hover:text-accent">Services</a></li>
+        <li><a href="/works/" class="text-slate-300 hover:text-accent">Works</a></li>
+        <li><a href="/blog/" class="text-accent">Blog</a></li>
+        <li><a href="/contact/" class="rounded bg-accent px-4 py-2 text-white hover:bg-blue-500">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+  <nav id="mobile-menu" class="hidden border-t border-slate-800 px-6 py-4 md:hidden">
+    <ul class="space-y-3 text-sm">
+      <li><a href="/">Home</a></li>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/services/">Services</a></li>
+      <li><a href="/works/">Works</a></li>
+      <li><a href="/blog/">Blog</a></li>
+      <li><a href="/contact/">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+<main class="site-container page-main">
+  <article class="blog-article page-section">
+    <p class="section-label mb-3">Blog</p>
+    <p class="blog-article__date mb-3">2026年10月26日</p>
+    <h1 class="section-title mb-5">PHPの「重大な穴」とは何か。ホームページ担当者が今確認すること</h1>
+    <div class="blog-card__tags mb-8"><span class="blog-tag">セキュリティ</span><span class="blog-tag">Web運用</span><span class="blog-tag">PHP</span></div>
+    <div class="blog-prose">
+<p>2026年10月21日、ホームページを動かしているプログラム「PHP」に、とても重大な弱点が2つあると公表されました。ニュースでは <strong>PHP2shell（ピーエイチピー・ツー・シェル）</strong> という呼び名で流れています。これは公式の名前ではなく、通称です。</p>
+<p>専門用語が多く、何をすればよいのか分かりにくかった方へ。何が起きているのか、自分のサイトは何を見ればよいのかを、順に整理します。</p>
+<h2>先に結論だけ</h2>
+<ul>
+<li>直す場所は、WordPressやお問い合わせフォームではありません。<strong>サーバーで動いているPHPそのもの</strong>です。</li>
+<li>WordPress本体、プラグイン、テーマを更新しても、今回の穴は塞がりません。</li>
+<li>エックスサーバーやさくら、ロリポップのような<strong>共用のレンタルサーバー</strong>では、多くの場合、利用者がPHPを自分で入れ替えるのではなく、<strong>サーバー会社が修正を入れます</strong>。</li>
+<li>画面に出ているPHPのバージョン番号が古く見えても、番号を変えずに修正だけ入れている会社があります。番号だけで「未対応」とは決めつけず、<strong>契約中の会社の公式お知らせ</strong>を見てください。</li>
+<li>自分でサーバーを管理している場合は、修正版への更新が必要です。PHP公式は「設定で一部をしのぐ方法はあるが、それだけでは安全にならない。更新が唯一の根本対策」としています。</li>
+</ul>
+<h2>PHPって、そもそも何？</h2>
+<p>ホームページを開くと、サーバーがページを組み立てて、ブラウザに返します。その組み立て役として、世界中のサイトで使われているのがPHPです。</p>
+<p>たとえるなら、お店の<strong>厨房</strong>です。お客さんが「このページを見せて」と注文すると、厨房（PHP）が料理（ページ）を作って出します。WordPressや、お問い合わせフォーム、予約システムは、その厨房で動く<strong>レシピ</strong>にあたります。</p>
+<p>今回問題になったのは、特定のレシピの書き間違いではありません。<strong>厨房の設備そのもの</strong>に穴が見つかった、という話です。だから、WordPressかどうかは関係ありません。PHPで動いているサイトなら、対象になり得ます。</p>
+<h2>何が危ないのか</h2>
+<p>この2つの穴は、ログインしていない人でも、インターネット越しにサーバーへ不正な命令を送り込めてしまう種類のものです。専門用語では「認証不要のリモートコード実行」と呼びます。</p>
+<p>うまく悪用されると、次のような被害につながり得ます。</p>
+<ul>
+<li>ページが知らない内容に書き換えられる</li>
+<li>顧客情報やパスワードが持ち出される</li>
+<li>自分のサイトが、ほかへの攻撃の踏み台にされる</li>
+</ul>
+<p>深刻さの点数（CVSS v4.0）は、2件とも <strong>9.2</strong> です。10点満点で、9.0以上はいちばん上の「緊急」に入ります。PHPの開発元が、公開の前日にあらかじめ「明日、重大な修正を出します」と予告したのは、かなり異例です。</p>
+<p>公表された2件は、次のとおりです。攻撃のやり方そのものは書きません。仕組みのイメージだけ置いておきます。</p>
+<ul>
+<li><strong>CVE-2026-109618</strong> … メモリ（作業机）が一杯になって処理が途中で止まったとき、作りかけのデータを「完成したデータ」と勘違いして片付けてしまう穴です。</li>
+<li><strong>CVE-2026-109619</strong> … 前のアクセスで使った内部メモを捨てたはずなのに、次のアクセスがそれを見てしまう穴です。</li>
+</ul>
+<p>どちらも、PHPがほぼ毎回通る「メモリの管理」と「エラーの処理」の近くにあります。だから、特定のプラグインだけの話にはなりません。</p>
+<p>PHP公式は、Webのアクセスを受けているPHP全般が対象だとしています。Apacheの <strong>mod_php</strong> という動かし方が特にリスクが高い、とも説明しています。PHP-FPMなど、ほかの動かし方でも「関係ない」とはなりません。更新の確認は必要です。</p>
+<p>修正版の公開前後には、この穴を突こうとする通信が観測された、という報告があります。一方、米国のサイバーセキュリティ機関CISAは、注意喚起を出した時点では「侵入まで成功した事例は確認していない」としています。成功例が公式に確定していないことと、放置してよいことは、別の話です。</p>
+<h2>どの版で直っているか</h2>
+<p>PHP公式が2026年10月21日に出した修正版は、次の4つです。</p>
+<table>
+<thead>
+<tr>
+<th>いまの系統</th>
+<th>修正が入った版</th>
+<th>補足</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PHP 8.5</td>
+<td>8.5.12</td>
+<td>同じ系統のまま更新</td>
+</tr>
+<tr>
+<td>PHP 8.4</td>
+<td>8.4.27</td>
+<td>同じ系統のまま更新</td>
+</tr>
+<tr>
+<td>PHP 8.3</td>
+<td>8.3.36</td>
+<td>同じ系統のまま更新</td>
+</tr>
+<tr>
+<td>PHP 8.2</td>
+<td>8.2.35</td>
+<td>同じ系統のまま更新。PHP 8.2のサポートは2026年12月31日で終了予定</td>
+</tr>
+<tr>
+<td>PHP 8.1以前</td>
+<td>PHPプロジェクトからの通常の修正版はなし</td>
+<td>サーバー会社やOS提供元の独自修正を確認する</td>
+</tr>
+</tbody>
+</table>
+<p>調査に関わったWiz社は、<strong>PHP 5.4以降</strong>は、2つのうち少なくともどちらかの影響を受ける、としています。かなり古いPHPで動いているサイトも、今回の対象外ではありません。</p>
+<p>PHP 8.1以前は、開発元の通常サポートが終わっています。重大だったため、7.4、8.0、8.1には「最小限の修正ソース」が用意されました。これは、自分でPHPを組み立てている人や、長期サポートの提供元がいない人向けの話です。共用レンタルサーバーの利用者は、まず会社の案内に従ってください。</p>
+<p>PHP公式は、一時的にリスクを下げる設定も案内しています。ただし「それだけでは安全にならない」とも明記しています。設定の調整は、更新までのつなぎであり、根本対策の代わりにはなりません。</p>
+<h2>WordPressを更新しても、今回は直らない</h2>
+<p>WordPress公式は2026年10月21日、セキュリティチームのJohn Blackbourn氏の名義で案内を出しています。要点は3つです。</p>
+<ul>
+<li>この穴はWordPress固有ではなく、PHPで動くサーバー全般の話である</li>
+<li>今回のためにWordPress本体を更新する必要はなく、その予定もない</li>
+<li>サーバー会社の案内を確認し、必要ならPHPを更新する</li>
+</ul>
+<p>WordPressの管理画面では、<strong>ツール → サイトヘルス → 情報 → サーバー</strong> に、いま動いているPHPのバージョンが出ます。ここを見るのが一番確実です。パソコンに入っているPHPと、ホームページを出しているPHPは、別物のことがあります。</p>
+<p>同じ週には、WordPress本体側の別の注意喚起も出ています。名前が似ていて混ざりやすいのですが、<strong>この記事が扱っているのはPHPそのものの穴</strong>です。WordPressの更新は、今回のPHPの穴を塞ぐ作業ではありません。ふだんの保守としては、本体・プラグイン・テーマの更新も続けてください。</p>
+<h2>自分のサイトは、何を見ればよいか</h2>
+<p>契約の形で、やることが変わります。</p>
+<h3>共用のレンタルサーバーを使っている場合</h3>
+<p>PHPの入れ替えは、原則としてサーバー会社の仕事です。利用者側でまずやることは、次の2つです。</p>
+<ol>
+<li>契約中の会社の<strong>公式お知らせ</strong>を開く（まとめサイトではなく、会社自身のページ）</li>
+<li>自分のプランが「会社が対応済み」なのか、「自分でバージョンを変える」なのかを読む</li>
+</ol>
+<p>2026年10月26日時点の公開情報では、国内の主な共用サーバーの多くが、10月21日夜から23日にかけて緊急の修正やメンテナンスを行ったと告知しています。ただし、会社とプランで中身は違います。VPS（自分でサーバーを操作する契約）は「利用者自身が更新する」としている会社もあります。</p>
+<p>ここでつまずきやすい点があります。<strong>管理画面のPHPバージョンが 8.3.35 のまま</strong>でも、会社が番号を変えずに修正だけ入れていることがあります。古い番号＝未対応、とは限りません。逆に、番号が新しくなっていても、自分のサーバーへ反映済みかは告知で確認します。</p>
+<p>この期間にサイトが一時的に開かなかったり、管理画面が重かったりした場合は、保護のためのメンテナンスだった可能性があります。まずは会社の障害・メンテナンス情報を見てください。</p>
+<h3>自分でサーバーを管理している場合</h3>
+<p>VPS、クラウド、社内のサーバーに、自分たちでPHPを入れているなら、修正版（8.5.12、8.4.27、8.3.36、8.2.35のいずれか）へ更新し、PHPを再起動します。コンテナで動かしている場合は、土台のイメージを新しいPHPに差し替えて、入れ直します。</p>
+<p>PHP 8.1以前で、すぐには新しい系統へ移せない場合、WordPress公式は各国のサイバー機関の助言として「完全に直せるまで、サーバーを止めることも検討する」と紹介しています。公開を続けるかどうかは、止められる業務影響と照らして判断してください。</p>
+<h3>更新のあと、目で見ておくこと</h3>
+<p>穴を塞いだあとでも、それより前に何か仕込まれていないかは、別の確認です。次のような変化がないか、見ておいてください。</p>
+<ul>
+<li>トップページやお問い合わせが、知らない文言や海外向けの文章に変わっていないか</li>
+<li>管理画面に、覚えのない管理者ユーザーが増えていないか</li>
+<li>自分たちが出していないページやファイルが増えていないか</li>
+<li>フォーム送信や予約が、急に失敗し続けていないか</li>
+</ul>
+<p>見慣れない変化があれば、消したり触ったりする前に、サーバー会社か制作・保守の担当者へ共有してください。</p>
+<h2>今回をきっかけに決めておきたいこと</h2>
+<p>緊急の確認が終わったあとに、残しておきたい判断が3つあります。</p>
+<ol>
+<li><strong>誰がPHPを更新するのか</strong>を決めておく。共用サーバーなら会社、VPSなら自社か保守先、です。</li>
+<li><strong>バックアップを誰が持っているか</strong>を確認する。更新の前後で、戻せる状態があるかは大事です。</li>
+<li><strong>古いPHPを、いつやめるか</strong>をカレンダーに入れる。PHP 8.2も2026年12月31日でサポートが終わります。今回直せても、古い系統のまま年を越すと、次の穴でまた同じ判断を迫られます。</li>
+</ol>
+<p>Alpha Scriptでは、ホームページの中身の更新だけでなく、こうした「サーバー側で何が起きているか」の確認も、運用の一部として一緒に見ています。お知らせの文面が読みにくいときは、契約中のサーバー名が分かれば、公式情報と照らして整理できます。</p>
+<h2>参考にした一次情報</h2>
+<ul>
+<li><a href="https://www.php.net/archive/2026.php">PHP公式のセキュリティ告知（2026年10月21日）</a></li>
+<li><a href="https://www.ipa.go.jp/security/security-alert/2026/alert20261022.html">IPA「PHPの脆弱性対策について（CVE-2026-109618、CVE-2026-109619：PHP2shell）」</a></li>
+<li><a href="https://wordpress.org/news/2026/10/critical-php-security-release/">WordPress公式「Critical PHP Security Release」（John Blackbourn、2026年10月21日）</a></li>
+<li><a href="https://www.cisa.gov/news-events/alerts/2026/10/21/critical-vulnerabilities-php-require-immediate-patching">CISAの注意喚起</a></li>
+<li><a href="https://thephp.foundation/blog/2026/10/21/todays-php-security-release-and-how-were-strengthening-php-security/">The PHP Foundationの解説</a></li>
+</ul>
+    </div>
+    <div class="mt-12 border-t border-slate-800 pt-8">
+      <a href="/blog/" class="btn-cta btn-cta-secondary btn-cta-sm">← 記事一覧へ</a>
+    </div>
+  </article>
+</main>
+<footer class="site-footer">
+  <div class="site-container site-footer__inner">
+    <p class="site-footer__brand">Alpha Script</p>
+    <div class="site-footer__links">
+      <a class="site-footer__x" href="https://x.com/kuromaru_web" target="_blank" rel="noopener noreferrer" aria-label="Alpha ScriptのX（旧Twitter）アカウント @kuromaru_web">
+        <svg class="site-footer__x-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.848L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/>
+        </svg>
+        <span>@kuromaru_web</span>
+      </a>
+      <a class="site-footer__github" href="https://github.com/AlphaScript-kyoto" target="_blank" rel="noopener noreferrer" aria-label="Alpha ScriptのGitHub組織 AlphaScript-kyoto">
+        <svg class="site-footer__github-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.09-.745.083-.73.083-.73 1.205.085 1.84 1.237 1.84 1.237 1.07 1.834 2.807 1.304 3.492.997.108-.775.418-1.305.76-1.605-2.665-.305-5.466-1.332-5.466-5.93 0-1.31.468-2.38 1.236-3.22-.124-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.3 1.23.96-.267 1.98-.4 3-.405 1.02.005 2.04.138 3 .405 2.29-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.873.12 3.176.77.84 1.235 1.91 1.235 3.22 0 4.61-2.807 5.624-5.48 5.92.43.372.823 1.102.823 2.222 0 1.606-.015 2.896-.015 3.286 0 .32.216.694.825.576C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12z"/>
+        </svg>
+        <span>AlphaScript-kyoto</span>
+      </a>
+    </div>
+    <p class="site-footer__copy">&copy; Alpha Script</p>
+  </div>
+</footer>
+<script>
+  const b = document.getElementById('menu-btn');
+  const m = document.getElementById('mobile-menu');
+  if (b && m) b.addEventListener('click', () => m.classList.toggle('hidden'));
+</script>
+</body>
+</html>
