@@ -106,6 +106,7 @@ def head_block(title: str, description: str, url: str, json_ld: str = "") -> str
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{safe_title}</title>
   <meta name="description" content="{safe_desc}">
+  <link rel="canonical" href="{safe_url}">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Alpha Script">
   <meta property="og:locale" content="ja_JP">

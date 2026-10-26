@@ -70,8 +70,8 @@ python -m http.server 8000
 
 ## SEO / AI 検索対応
 
-- 各ページに `meta description` を設定
-- JSON-LD 構造化データを配置
+- 各ページに `meta description` と canonical（そのページの正規URL）を設定
+- JSON-LD 構造化データを配置（HOME のよくある質問は FAQ としても記載）
 - `robots.txt` と `sitemap.xml` を配置
 - `llms.txt` / `llms-full.txt` を配置
 
