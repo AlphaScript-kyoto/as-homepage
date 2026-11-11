@@ -188,6 +188,7 @@ def site_footer() -> str:
         <span>AlphaScript-kyoto</span>
       </a>
     </div>
+    <p class="site-footer__disclosure text-xs text-slate-500">Amazonのアソシエイトとして、Alpha Scriptは適格販売により収入を得ています。</p>
     <p class="site-footer__copy">&copy; Alpha Script</p>
   </div>
 </footer>
@@ -292,6 +293,7 @@ def render_post(post: dict) -> str:
     <div class="blog-prose">
 {post["body_html"]}
     </div>
+    <p class="mt-10 text-sm text-slate-400">本記事にはプロモーションが含まれています。Amazonのアソシエイトとして、Alpha Scriptは適格販売により収入を得ています。</p>
     <div class="mt-12 border-t border-slate-800 pt-8">
       <a href="/blog/" class="btn-cta btn-cta-secondary btn-cta-sm">← 記事一覧へ</a>{contact_button}
     </div>
